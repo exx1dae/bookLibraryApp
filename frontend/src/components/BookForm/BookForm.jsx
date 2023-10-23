@@ -14,7 +14,7 @@ const BookForm = () => {
     e.preventDefault();
 
     if (title && author) {
-      dispatch(addBook({ title, author, id: uuid() })); // dispatch принимает аргумент - действие (объект с типом и payload)
+      dispatch(addBook({ title, author, id: uuid(), isFavorite: false })); // dispatch принимает аргумент - действие (объект с типом и payload)
 
       setTitle("");
       setAuthor("");
@@ -25,7 +25,7 @@ const BookForm = () => {
     const randomIndex = Math.floor(Math.random() * booksData.length);
     const randomBook = booksData[randomIndex];
 
-    dispatch(addBook({ ...randomBook, id: uuid() }));
+    dispatch(addBook({ ...randomBook, id: uuid(), isFavorite: false }));
   };
 
   return (
