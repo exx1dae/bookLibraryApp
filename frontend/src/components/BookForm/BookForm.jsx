@@ -20,7 +20,7 @@ const BookForm = () => {
         title,
         author,
       };
-      dispatch(addBook(createBookWithId(book))); // dispatch принимает аргумент - действие (объект с типом и payload)
+      dispatch(addBook(createBookWithId(book, "manual"))); // dispatch принимает аргумент - действие (объект с типом и payload)
 
       setTitle("");
       setAuthor("");
@@ -31,14 +31,14 @@ const BookForm = () => {
     const randomIndex = Math.floor(Math.random() * booksData.length);
     const randomBook = booksData[randomIndex];
 
-    dispatch(addBook(createBookWithId(randomBook)));
+    dispatch(addBook(createBookWithId(randomBook, "random")));
   };
 
   const handleAddRandomBookViaApi = async () => {
     try {
       const res = await axios.get("http://localhost:4000/random-book");
       if (res.data && res.data.title && res.data.author) {
-        dispatch(addBook(createBookWithId(res.data)));
+        dispatch(addBook(createBookWithId(res.data, "API")));
       }
     } catch (e) {
       console.log("Error fetching book", e);

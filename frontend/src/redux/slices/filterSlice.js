@@ -19,7 +19,7 @@ const filterSlice = createSlice({
     setFavoriteFilter: (state) => {
       state.favorite = !state.favorite;
     },
-    resetFilters: (state) => {
+    resetFilters: () => {
       return initialState;
     },
   },
